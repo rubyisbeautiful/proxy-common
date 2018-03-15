@@ -11,6 +11,20 @@
   when:
     - common_proxy_active
     - common_proxy_set_yum
+    - ansible_os_family == 'RedHat'
+
+- name: Ensure proxy set in apt
+  become: true
+  template:
+    src: templates/10apt-proxy.j2
+    dest: /etc/apt/apt.conf.d/10apt-proxy
+    owner: root
+    group: root
+    mode: "0640"
+  when:
+    - common_proxy_active
+    - common_proxy_set_yum
+    - ansible_os_family == 'Debian'
 
 - name: ensure proxy set in bash
   become: true
