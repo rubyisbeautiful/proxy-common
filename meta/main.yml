@@ -3,7 +3,7 @@
 galaxy_info:
   author: rubyisbeautiful
   description: >
-    Sets up common http proxy settings for Ansible, bash, and yum
+    Sets up common http proxy settings for Ansible, bash, and apt or yum
     with various options
   company: rubyisbeautiful
   license: MIT
@@ -14,6 +14,12 @@ galaxy_info:
     versions:
     - 6
     - 7
+  - name: Fedora
+    versions:
+    - 27
+  - name: Ubuntu
+    versions:
+    - xenial
   categories:
     - cloud
 dependencies: []

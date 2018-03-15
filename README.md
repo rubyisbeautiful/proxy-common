@@ -1,10 +1,11 @@
-# proxy-common
+# proxy-common [![Build Status](https://travis-ci.org/rubyisbeautiful/proxy-common.svg?branch=master)](https://travis-ci.org/rubyisbeautiful/proxy-common)
 
 ## Basic Usage
 
-This role will common proxy settings.  It will optionally install it
-in yum's default configuration, optionally install it in bash's defualt profile,
-and export it for use in other Ansible roles.
+This role will take common proxy settings and optionally install it
+in yum or apt's default configuration, optionally install it in bash's default
+profile, and export it for use in other Ansible roles that need a proxy
+setting.
 
 There are many configurable options -- see defaults/main.yml
 
@@ -114,3 +115,5 @@ Author Information
 ------------------
 
 rubyisbeautiful
+
+Thanks to @geerlingguy for the [awesome tests setup](https://github.com/geerlingguy/ansible-role-redis/tree/master/tests)
