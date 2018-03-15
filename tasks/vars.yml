@@ -1,0 +1,51 @@
+---
+
+- set_fact:
+    common_proxy_active: "{{ not((common_proxy_host is undefined) or (common_proxy_host == None) or (common_proxy_host|trim == '')) }}"
+
+- name: check proxy variables and setup env
+  block:
+    - name: precondition - common_proxy_port
+      fail:
+        msg: ERROR - required variable 'common_proxy_port' missing
+      when: common_proxy_port is undefined
+
+    - name: set common_proxy
+      set_fact:
+        common_proxy: "{{ common_proxy_protocol }}://{{ common_proxy_host }}:{{ common_proxy_port }}"
+      when: common_proxy_user is undefined
+
+    - name: set common_proxy
+      set_fact:
+        common_proxy: "{{ common_proxy_protocol }}://{{ common_proxy_user }}@{{ common_proxy_host }}:{{ common_proxy_port }}"
+      when: common_proxy_user is defined and common_proxy_pass is undefined
+
+    - name: set common_proxy
+      set_fact:
+        common_proxy: "{{ common_proxy_protocol }}://{{ common_proxy_user }}:{{ common_proxy_pass }}@{{ common_proxy_host }}:{{ common_proxy_port }}"
+      when: common_proxy_user is defined and common_proxy_pass is defined
+
+    - name: set common_proxy_env when host is defined
+      set_fact:
+        common_proxy_env:
+          http_proxy: "{{ common_proxy|quote }}"
+          HTTP_PROXY: "{{ common_proxy|quote }}"
+          https_proxy: "{{ common_proxy|quote }}"
+          HTTPS_PROXY: "{{ common_proxy|quote }}"
+          no_proxy: "{{ common_no_proxy|quote }}"
+          NO_PROXY: "{{ common_no_proxy|quote }}"
+  when: common_proxy_active
+
+- name: set proxy vars when host is undefined or blank
+  block:
+    - set_fact:
+        common_proxy: ''
+        common_no_proxy: ''
+        common_proxy_env:
+          http_proxy: ''
+          HTTP_PROXY: ''
+          https_proxy: ''
+          HTTPS_PROXY: ''
+          no_proxy: ''
+          NO_PROXY: ''
+  when: not common_proxy_active

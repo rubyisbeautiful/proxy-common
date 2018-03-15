@@ -1,0 +1,19 @@
+---
+
+galaxy_info:
+  author: rubyisbeautiful
+  description: >
+    Sets up common http proxy settings for Ansible, bash, and yum
+    with various options
+  company: rubyisbeautiful
+  license: MIT
+  min_ansible_version: 2.0.0
+  # Only including platforms that have actually been used/tested
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  categories:
+    - cloud
+dependencies: []

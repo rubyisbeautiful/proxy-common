@@ -1,0 +1,14 @@
+---
+
+# required
+#common_proxy_host:
+#common_proxy_port:
+
+# optional
+common_proxy_set_yum: true
+common_proxy_set_bash: true
+
+common_proxy_protocol: http
+common_no_proxy: localhost
+# common_proxy_user:
+# common_proxy_pass:

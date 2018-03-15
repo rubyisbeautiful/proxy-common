@@ -1,0 +1,4 @@
+---
+
+- include_tasks: vars.yml
+- include_tasks: install.yml

@@ -1,0 +1,25 @@
+---
+
+- name: Ensure proxy set in yum
+  become: true
+  ini_file:
+    dest: /etc/yum.conf
+    section: main
+    option: proxy
+    value: "{{ common_proxy }}"
+    backup: yes
+  when:
+    - common_proxy_active
+    - common_proxy_set_yum
+
+- name: ensure proxy set in bash
+  become: true
+  template:
+    src: templates/proxy.sh.j2
+    dest: /etc/profile.d/proxy.sh
+    owner: root
+    group: root
+    mode: "0644"
+  when:
+    - common_proxy_active
+    - common_proxy_set_bash
