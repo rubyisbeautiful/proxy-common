@@ -1,4 +1,6 @@
-# proxy-common [![Build Status](https://travis-ci.org/rubyisbeautiful/proxy-common.svg?branch=master)](https://travis-ci.org/rubyisbeautiful/proxy-common)
+# proxy-common
+[![Build Status](https://semaphoreci.com/api/v1/rubyisbeautiful/proxy-common/branches/master/badge.svg)](https://semaphoreci.com/rubyisbeautiful/proxy-common) 
+[![Build Status](https://travis-ci.org/rubyisbeautiful/proxy-common.svg?branch=master)](https://travis-ci.org/rubyisbeautiful/proxy-common)
 
 ## Basic Usage
 
