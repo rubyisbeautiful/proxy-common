@@ -1,8 +1,8 @@
 ---
+- name: Converge
+  hosts: all
 
-- hosts: all
-
-  tasks:
+  pre_tasks:
 
     - name: Update apt cache
       apt:
@@ -15,5 +15,5 @@
         redis_enablerepo: ""
       when: ansible_distribution == 'Fedora'
 
-    - include_role:
-        name: role_under_test
+  roles:
+    - role: proxy-common

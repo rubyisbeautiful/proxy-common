@@ -1,8 +1,8 @@
 ---
 
 # required
-#common_proxy_host:
-#common_proxy_port:
+# common_proxy_host:
+# common_proxy_port:
 
 # optional
 common_proxy_set_yum: true
