@@ -2,6 +2,3 @@
 ### Ansible template
 *.retry
 *.pyc
-tmp
-.vagrant
-tests/test.sh

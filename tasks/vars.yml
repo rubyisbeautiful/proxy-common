@@ -1,7 +1,8 @@
 ---
 
-- set_fact:
-    common_proxy_active: "{{ not((common_proxy_host is undefined) or (common_proxy_host == None) or (common_proxy_host|trim == '')) }}"
+- name: set proxy active
+  set_fact:
+    common_proxy_active: "{{ not((common_proxy_host is undefined) or (common_proxy_host == None) or (common_proxy_host|trim == '')) }}"  # noqa 204 602 - allow comparing with empty string here to ensure a thorough check
 
 - name: check proxy variables and setup env
   block:
@@ -38,7 +39,8 @@
 
 - name: set proxy vars when host is undefined or blank
   block:
-    - set_fact:
+    - name: declare all vars as empty when not active
+      set_fact:
         common_proxy: ''
         common_no_proxy: ''
         common_proxy_env:

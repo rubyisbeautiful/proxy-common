@@ -7,7 +7,7 @@
     section: main
     option: proxy
     value: "{{ common_proxy }}"
-    backup: yes
+    backup: true
   when:
     - common_proxy_active
     - common_proxy_set_yum

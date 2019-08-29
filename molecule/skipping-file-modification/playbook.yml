@@ -1,0 +1,23 @@
+---
+- name: Converge
+  hosts: all
+
+  pre_tasks:
+
+    - name: Update apt cache
+      apt:
+        cache_valid_time: 600
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+
+    - name: Clear out repo for Fedora
+      set_fact:
+        redis_enablerepo: ""
+      when: ansible_distribution == 'Fedora'
+
+  roles:
+    - role: proxy-common
+      vars:
+        common_proxy_host: 127.0.0.1.xip.io
+        common_proxy_port: 3128
+        common_proxy_set_yum: False  # yamllint disable-line rule:truthy
